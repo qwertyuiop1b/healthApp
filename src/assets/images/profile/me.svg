@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>iconspace_bs</title>
+    <desc>Created with Sketch.</desc>
+    <g id="iconspace_bs" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iconspace_List-Document">
+            <polygon id="Shape" points="0 0 40 0 40 40 0 40"></polygon>
+            <path d="M5,5 L5,35 L35,35 L35,5 L5,5 Z M38.3333333,1.66666667 L38.3333333,38.3333333 L1.66666667,38.3333333 L1.66666667,1.66666667 L38.3333333,1.66666667 Z" id="Shape" fill="#344356" fill-rule="nonzero"></path>
+            <polygon id="Shape" fill="#4293F4" fill-rule="nonzero" points="8.33333333 13.3333333 8.33333333 10 18.3333333 10 18.3333333 13.3333333"></polygon>
+            <polygon id="Shape" fill="#4293F4" fill-rule="nonzero" points="8.33333333 21.6666667 8.33333333 18.3333333 31.6666667 18.3333333 31.6666667 21.6666667"></polygon>
+            <polygon id="Shape" fill="#4293F4" fill-rule="nonzero" points="8.33333333 30 8.33333333 26.6666667 25 26.6666667 25 30"></polygon>
+        </g>
+    </g>
+</svg>

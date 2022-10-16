@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>ic/iconspace_fk</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ic/iconspace_fk" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iconspace_Love">
+            <polygon id="Shape" points="0 0 40 0 40 40 0 40"></polygon>
+        </g>
+        <g id="编组" transform="translate(3.147436, 15.723529)">
+            <g id="编组-2" transform="translate(21.399610, 0.275375)" stroke="#979797">
+                <path d="" id="路径-3"></path>
+            </g>
+            <path d="M0.852564216,19.5 L32.8525642,19.5" id="路径" stroke="#4293F4" stroke-width="3"></path>
+            <path d="M22.3996102,11.7764709 L32.8525642,11.7764709" id="路径" stroke="#4293F4" stroke-width="3"></path>
+        </g>
+        <path d="M14.2675685,29.5 L29.8786797,13.8888889 L21.1111111,5.12132034 L5.5,20.7324315 L5.5,29.5 L14.2675685,29.5 Z" id="路径" stroke="#344356" stroke-width="3"></path>
+    </g>
+</svg>
