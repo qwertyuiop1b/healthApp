@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/Entypo';
 import {getCurrentTime} from '../utils';
 
 import Needle from '../assets/images/qrcode/needle.svg';
-import { PageRightButton } from './home';
+import {PageRightButton} from './home';
 
 export default function QRcodeScreen({navigation}) {
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
