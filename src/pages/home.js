@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 
 import {
   SafeAreaView,
@@ -37,7 +37,8 @@ export const orderList = [
   {
     title: '新冠疫苗接种预约',
     desc: '根据国家、省统一部署，面向个人市民提供\n疫苗接种预约',
-    iconSrc: '',
+    iconSrc: <Hsjc width={48} height={48} style={{marginHorizontal: 14}} />,
+    svg: true,
   },
 ];
 
@@ -69,7 +70,8 @@ export const convienceList = [
   {
     title: '药店登记',
     desc: '购买特殊药品或体温异常居民，请先\n选择申报人信息，并扫药店二维码进\n行登记',
-    iconSrc: '',
+    iconSrc: <Menzhen width={48} height={48} style={{marginHorizontal: 14}} />,
+    svg: true,
   },
 ];
 
@@ -174,29 +176,57 @@ const pageButtonStyle = StyleSheet.create({
     borderRadius: 8,
   },
 });
-const PageRightButton = () => {
+export const PageRightButton = ({
+  circleColor = '#fff',
+  backgroundColor = 'rgba(0,0,0,.15)',
+}) => {
   const currentHeight = StatusBar.currentHeight;
 
   return (
-    <View style={[pageButtonStyle.wrapper, {marginTop: currentHeight + 5}]}>
+    <View
+      style={[
+        pageButtonStyle.wrapper,
+        {
+          marginTop: currentHeight + 5,
+          backgroundColor: backgroundColor,
+          borderColor: circleColor,
+          borderWidth: 0.5,
+        },
+      ]}>
       <View style={pageButtonStyle.item}>
-        <View style={pageButtonStyle.circle} />
+        <View
+          style={[pageButtonStyle.circle, {backgroundColor: circleColor}]}
+        />
         <View
           style={[
             pageButtonStyle.circle,
-            {width: 6, height: 6, borderRadius: 3, marginHorizontal: 3},
+            {
+              width: 6,
+              height: 6,
+              borderRadius: 3,
+              marginHorizontal: 3,
+              backgroundColor: circleColor,
+            },
           ]}
         />
-        <View style={pageButtonStyle.circle} />
+        <View
+          style={[pageButtonStyle.circle, {backgroundColor: circleColor}]}
+        />
       </View>
 
       <View style={[pageButtonStyle.item]}>
         <View
           style={[
             pageButtonStyle.rightCircle,
-            {alignItems: 'center', justifyContent: 'center'},
+            {
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderColor: circleColor,
+            },
           ]}>
-          <View style={pageButtonStyle.circle} />
+          <View
+            style={[pageButtonStyle.circle, {backgroundColor: circleColor}]}
+          />
         </View>
       </View>
     </View>
@@ -218,8 +248,16 @@ const HomeList = ({title, list}) => {
           borderRightColor: '#d1e0ea',
           borderLeftColor: '#d1e0ea',
         }}>
-        {list.map(item => (
-          <View key={item.desc} style={listStyles.itemWrapper}>
+        {list.map((item, index) => (
+          <View
+            key={item.desc}
+            style={[
+              listStyles.itemWrapper,
+              {
+                borderBottomColor:
+                  index + 1 === list.length ? 'transparent' : '#dfdfdf',
+              },
+            ]}>
             {item?.svg ? (
               item.iconSrc
             ) : (
@@ -265,7 +303,9 @@ const listStyles = StyleSheet.create({
   },
 });
 
-const HomeSreen = () => {
+const HomeSreen = ({navigation}) => {
+  const [showHomeBg, setShowHomeBg] = useState(true);
+
   const handleBtnClick = type => {
     if (type === 'hesuan') {
       console.log('hesuan');
@@ -274,17 +314,58 @@ const HomeSreen = () => {
     }
   };
 
-  const handleQRcodePress = () => {};
+  const handleQRcodePress = () => {
+    navigation.navigate('QRcode');
+  };
+
+  const handleScroll = evt => {
+    const {y} = evt.nativeEvent.contentOffset;
+    if (y >= 120) {
+      setShowHomeBg(false);
+    } else {
+      setShowHomeBg(true);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.safeView}>
-      <StatusBar translucent backgroundColor={'transparent'} />
-      <Image
-        style={styles.img}
-        source={require('../assets/images/home/home_bg.png')}
+      <StatusBar
+        translucent
+        backgroundColor={'transparent'}
+        hidden={!showHomeBg}
       />
+      {showHomeBg && (
+        <Image
+          style={styles.img}
+          source={require('../assets/images/home/home_bg.png')}
+        />
+      )}
+      {!showHomeBg && (
+        <View
+          style={{
+            height: 60,
+            backgroundColor: '#fff',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderBottomColor: 'rgba(0,0,0,.05)',
+            borderBottomWidth: 1,
+          }}>
+          <Text
+            style={{
+              fontSize: 16,
+              textAlignVertical: 'center',
+              includeFontPadding: false,
+              color: '#333',
+            }}>
+            深i您 - 自主申报
+          </Text>
+        </View>
+      )}
       <PageRightButton />
-      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.container}
+        onScroll={handleScroll}>
         <View style={styles.content}>
           <TabBar />
           <TouchableWithoutFeedback onPress={handleQRcodePress}>
@@ -356,7 +437,7 @@ const HomeSreen = () => {
           </View>
           <View style={styles.footer}>
             <Text style={{fontSize: 12}}>
-              深圳市政府主办/深圳是政务服务数据管理局承办
+              深圳市政府主办/深圳市政务服务数据管理局承办
             </Text>
             <Text style={{fontSize: 12, marginTop: 2}}>
               腾讯公司/腾讯云提供技术支持
