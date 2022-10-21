@@ -12,11 +12,18 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import LinearGradient from 'react-native-linear-gradient';
+import QRCode from 'react-native-qrcode-svg';
 
 import {getCurrentTime} from '../utils';
-
 import Needle from '../assets/images/qrcode/needle.svg';
 import {PageRightButton} from './home';
+
+const QRCodeString = `
+helloworlouinoinojnoubyv8hellhelloworlouinoinojnoub
+yv8crtryc7ugutfv7ft8uygi9yg9i7ut9ol7doworlouinoinoj
+noubyv8crtryc7ugutfv7ft8uygi9yg9i7ut9ol7dcrtryc7ugu
+tfv7ft8uygi9yg9i7ut9ol7d
+`;
 
 export default function QRcodeScreen({navigation}) {
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
@@ -74,15 +81,23 @@ export default function QRcodeScreen({navigation}) {
                     top: -5,
                   }}
                 />
+                <QRCode
+                  value={QRCodeString}
+                  size={180}
+                  color={'#37b365'}
+                  backgroundColor={'#fff'}
+                />
               </ImageBackground>
               <Image
                 style={styles.greenCode}
                 source={require('../assets/images/qrcode/qrcode_green.png')}
               />
-              <View style={styles.refreshCode}>
-                <Icon name="cw" size={14} color={'#fff'} />
-                <Text style={styles.refreshCodeText}>刷新健康码</Text>
-              </View>
+              <TouchableOpacity>
+                <View style={styles.refreshCode}>
+                  <Icon name="cw" size={14} color={'#fff'} />
+                  <Text style={styles.refreshCodeText}>刷新健康码</Text>
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -244,6 +259,8 @@ const styles = StyleSheet.create({
   qrcodeImg: {
     width: 200,
     height: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   greenCode: {
     width: 149,
