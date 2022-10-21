@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
+import LinearGradient from 'react-native-linear-gradient';
 
 import {getCurrentTime} from '../utils';
 
@@ -88,7 +89,7 @@ export default function QRcodeScreen({navigation}) {
       </ImageBackground>
       <View style={styles.mainContent}>
         <View style={styles.btnsWrapper}>
-          <View style={styles.btn}>
+          <LinearGradient colors={['#fff', '#000']} style={styles.btn}>
             <View>
               <Text style={[styles.btnText, {fontSize: 14}]}>核酸检测</Text>
             </View>
@@ -106,7 +107,8 @@ export default function QRcodeScreen({navigation}) {
               </View>
             </View>
             <Text style={styles.btnText}>2022-09-23 23:57:25</Text>
-          </View>
+          </LinearGradient>
+
           <View style={[styles.btn, {backgroundColor: '#fff'}]}>
             <View>
               <Text style={[styles.btnText, {color: '#666', fontSize: 14}]}>
@@ -270,14 +272,12 @@ const styles = StyleSheet.create({
   },
   btnsWrapper: {
     height: 116,
-    backgroundColor: 'red',
     borderRadius: 5,
     overflow: 'hidden',
     flexDirection: 'row',
   },
   btn: {
     flex: 1,
-    backgroundColor: '#0182f7',
     alignItems: 'center',
     justifyContent: 'center',
   },
